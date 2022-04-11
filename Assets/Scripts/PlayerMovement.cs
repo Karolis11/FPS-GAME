@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed = 8f;
     private float gravity = -9.81f * 3;
     private float groundDistance = 0.4f;
-    private float jumpHeight = 1.5f;
+    private float jumpHeight = 1.6f;
 
     private bool isGrounded;
     
