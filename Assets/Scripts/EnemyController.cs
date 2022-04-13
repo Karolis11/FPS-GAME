@@ -8,20 +8,20 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private HealthBar healthBar;
 
-    private Rigidbody rb;
+    private Rigidbody enemyRb;
     private GameObject player;
     private Vector3 movement;
 
     private const int maxHealth = 3;
     private int currentHealth;
-    private float speed = 3.0f;
+    private float speed = 2.0f;
     
     
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = this.GetComponent<Rigidbody>();
+        enemyRb = this.GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         Vector3 lookDir = (player.transform.position - transform.position).normalized;
-        rb.AddForce(lookDir * speed);
+        enemyRb.AddForce(lookDir * speed);
 
     }
 
@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 
 }

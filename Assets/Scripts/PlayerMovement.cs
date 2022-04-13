@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundMask;
 
+    SpawnManager spawnManager;
+
     private Vector3 velocity;
     
     private float speed = 8f;
@@ -21,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
     }
 
     // Update is called once per frame
@@ -49,5 +51,16 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        
+        if (other.CompareTag("Level1"))
+        {
+            spawnManager.SpawnEnemiesLevel1();
+            Destroy(other.gameObject);
+        }
+        
+    }
+
+
 }
