@@ -13,10 +13,10 @@ public class EnemyController : MonoBehaviour
     private Vector3 movement;
 
     private const int maxHealth = 3;
+    private const int bossMaxHealth = 7;
     private int currentHealth;
+    private int bossCurrentHealth;
     private float speed = 2.0f;
-    
-    
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +24,7 @@ public class EnemyController : MonoBehaviour
         enemyRb = this.GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
         currentHealth = maxHealth;
+        bossCurrentHealth = bossMaxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
 
@@ -37,9 +38,18 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        currentHealth -= dmg;
+        if (this.gameObject.tag == "Boss")
+        {
+            bossCurrentHealth -= dmg;
+        }
+        else
+        {
+            currentHealth -= dmg;
+        }
+        Debug.Log(gameObject.tag);
+
         healthBar.SetHealth(currentHealth);
-        if(currentHealth <= 0f)
+        if(currentHealth <= 0f || bossCurrentHealth <= 0f)
         {
             Die();
         }

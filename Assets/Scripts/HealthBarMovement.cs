@@ -9,6 +9,6 @@ public class HealthBarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(parentObjt.position.x, parentObjt.position.y + 1, parentObjt.position.z);
+         transform.position = new Vector3(parentObjt.position.x, parentObjt.position.y + 1, parentObjt.position.z);
     }
 }

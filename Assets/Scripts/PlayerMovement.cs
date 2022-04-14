@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private float gravity = -9.81f * 3;
     private float groundDistance = 0.4f;
     private float jumpHeight = 1.6f;
+    private float xBarier = 24.7f;
 
     private bool isGrounded;
     
@@ -49,6 +50,11 @@ public class PlayerMovement : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        if(transform.position.x > xBarier)
+        {
+            transform.position = new Vector3(xBarier, transform.position.y, transform.position.z);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -57,9 +63,24 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("Level1"))
         {
             spawnManager.SpawnEnemiesLevel1();
+            xBarier = other.transform.position.x;
             Destroy(other.gameObject);
         }
-        
+
+        if (other.CompareTag("Level2"))
+        {
+            spawnManager.SpawnEnemiesLevel2();
+            xBarier = other.transform.position.x;
+            Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Level3"))
+        {
+            spawnManager.SpawnEnemiesLevel3();
+            xBarier = other.transform.position.x;
+            Destroy(other.gameObject);
+        }
+
     }
 
 

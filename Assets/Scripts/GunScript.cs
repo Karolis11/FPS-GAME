@@ -7,7 +7,7 @@ public class GunScript : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] ParticleSystem muzzleFlash;
     private float demage = 10f;
-    private float range = 100f;
+    private float range = 150f;
 
     // Update is called once per frame
     void Update()
@@ -25,8 +25,6 @@ public class GunScript : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
         {
-            Debug.Log(hit.transform.name);
-
             EnemyController enemy =  hit.transform.GetComponent<EnemyController>();
             if(enemy != null)
             {

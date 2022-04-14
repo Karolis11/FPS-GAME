@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - Level1
   - SpawnManager
+  - Level2
+  - Level3
+  - Boss
   layers:
   - Default
   - TransparentFX
