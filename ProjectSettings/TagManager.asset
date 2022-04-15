@@ -10,6 +10,7 @@ TagManager:
   - Level2
   - Level3
   - Boss
+  - Enemy
   layers:
   - Default
   - TransparentFX

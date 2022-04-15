@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 6661148908923550559}
   m_Layer: 0
   m_Name: FullEnemyNew
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -457,6 +457,22 @@ PrefabInstance:
     - target: {fileID: 7727273851545147659, guid: d5c570a8c4b3304459ae43ecb0f9c8a9, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727273851545147659, guid: d5c570a8c4b3304459ae43ecb0f9c8a9, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792107019531120174, guid: d5c570a8c4b3304459ae43ecb0f9c8a9, type: 3}
+      propertyPath: m_Size.x
+      value: 1.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792107019531120174, guid: d5c570a8c4b3304459ae43ecb0f9c8a9, type: 3}
+      propertyPath: m_Size.y
+      value: 1.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 7792107019531120174, guid: d5c570a8c4b3304459ae43ecb0f9c8a9, type: 3}
+      propertyPath: m_Size.z
+      value: 1.03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5c570a8c4b3304459ae43ecb0f9c8a9, type: 3}

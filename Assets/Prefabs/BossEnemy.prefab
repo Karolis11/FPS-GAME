@@ -466,6 +466,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 3575710449172438551}
+    - target: {fileID: 4342373050500215696, guid: d5c570a8c4b3304459ae43ecb0f9c8a9, type: 3}
+      propertyPath: bossHealthBar
+      value: 
+      objectReference: {fileID: 3575710449172438551}
     - target: {fileID: 4925327381848161473, guid: d5c570a8c4b3304459ae43ecb0f9c8a9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

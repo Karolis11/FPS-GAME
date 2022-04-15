@@ -9,6 +9,14 @@ public class HealthBarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         transform.position = new Vector3(parentObjt.position.x, parentObjt.position.y + 1, parentObjt.position.z);
+        if(parentObjt.gameObject.tag == "Boss")
+        {
+            transform.position = new Vector3(parentObjt.position.x, parentObjt.position.y + 5, parentObjt.position.z);
+        }
+        else
+        {
+            transform.position = new Vector3(parentObjt.position.x, parentObjt.position.y + 1, parentObjt.position.z);
+        }
+         
     }
 }

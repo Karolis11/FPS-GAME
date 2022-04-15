@@ -37,4 +37,9 @@ public class SpawnManager : MonoBehaviour
         }
         Instantiate(bossPrefab, bossSpawnPoint.transform.position, Quaternion.identity);
     }
+
+    public int GetAmountOfEnemies()
+    {
+        return spawnPoints1.Length + spawnPoints2.Length + spawnPoints3.Length;
+    }
 }

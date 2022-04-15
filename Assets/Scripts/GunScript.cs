@@ -6,6 +6,8 @@ public class GunScript : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] ParticleSystem muzzleFlash;
+    [SerializeField] GameObject player;
+
     private float demage = 10f;
     private float range = 150f;
 
@@ -20,15 +22,18 @@ public class GunScript : MonoBehaviour
 
     void Shoot()
     {
-        muzzleFlash.Play();
-
-        RaycastHit hit;
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
+        if (player.GetComponent<PlayerMovement>().isGameActive)
         {
-            EnemyController enemy =  hit.transform.GetComponent<EnemyController>();
-            if(enemy != null)
+            muzzleFlash.Play();
+
+            RaycastHit hit;
+            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, range))
             {
-                enemy.TakeDamage(1);
+                EnemyController enemy = hit.transform.GetComponent<EnemyController>();
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(1);
+                }
             }
         }
     }
