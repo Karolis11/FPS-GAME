@@ -11,20 +11,21 @@ public class EnemyController : MonoBehaviour
     private Rigidbody enemyRb;
     private GameObject player;
 
-    private const int maxHealth = 3;
-    private const int bossMaxHealth = 7;
+    public static int maxHealth = 3;
+    public static int bossMaxHealth = 7;
 
-    private static int enemiesKilled = 0;
+    private static int enemiesKilled;
 
     private int currentHealth;
 
-    private float speed = 2.0f;
+    public static float speed = 2.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyRb = this.GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
+
         if(gameObject.tag == "Boss")
         {
             currentHealth = bossMaxHealth;
@@ -41,7 +42,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.GetComponent<PlayerMovement>().isGameActive)
+        if (player.GetComponent<PlayerMovement>().IsGameActive())
         {
             Vector3 lookDir = (player.transform.position - transform.position).normalized;
             enemyRb.AddForce(lookDir * speed);
@@ -53,9 +54,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public int GetEnemiesKiled()
+    public static void SetDifficulty(int maxHP, int bossMaxHP, float spd)
     {
-        return enemiesKilled;
+        maxHealth = maxHP;
+        bossMaxHealth = bossMaxHP;
+        speed = spd;
     }
 
     public void TakeDamage(int dmg)
@@ -67,6 +70,11 @@ public class EnemyController : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public static void ResetKilledEnemies()
+    {
+        enemiesKilled = 0;
     }
 
     private void Die()

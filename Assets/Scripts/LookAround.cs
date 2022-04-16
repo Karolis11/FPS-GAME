@@ -12,7 +12,7 @@ public class LookAround : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class LookAround : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -99, 90f);
 
-        if (playerBody.GetComponent<PlayerMovement>().isGameActive)
+        if (playerBody.GetComponent<PlayerMovement>().IsGameActive())
         {
             transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
             playerBody.Rotate(Vector3.up * mouseX);

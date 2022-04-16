@@ -8,7 +8,7 @@ public class GunScript : MonoBehaviour
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject player;
 
-    private float demage = 10f;
+    private int damage = 1;
     private float range = 150f;
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class GunScript : MonoBehaviour
 
     void Shoot()
     {
-        if (player.GetComponent<PlayerMovement>().isGameActive)
+        if (player.GetComponent<PlayerMovement>().IsGameActive())
         {
             muzzleFlash.Play();
 
@@ -32,7 +32,7 @@ public class GunScript : MonoBehaviour
                 EnemyController enemy = hit.transform.GetComponent<EnemyController>();
                 if (enemy != null)
                 {
-                    enemy.TakeDamage(1);
+                    enemy.TakeDamage(damage);
                 }
             }
         }

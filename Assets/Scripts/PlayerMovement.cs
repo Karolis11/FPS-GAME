@@ -9,15 +9,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Image[] healthImage;
-    [SerializeField] private GameObject looseScreen;
-    [SerializeField] private GameObject winScreen;
+    [SerializeField] private ScreensManager screenManager;
 
     private SpawnManager spawnManager;
     
     private Vector3 velocity;
 
     private int health = 3;
-    private int enemiesKilled;
     
     private float speed = 8f;
     private float gravity = -9.81f * 3;
@@ -26,14 +24,13 @@ public class PlayerMovement : MonoBehaviour
     private float xBarier = 24.7f;
 
     private bool isGrounded;
-    public bool isGameActive;
+    private bool isGameActive;
     
 
     // Start is called before the first frame update
     void Start()
     {
         spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
-        isGameActive = true;
     }
 
     // Update is called once per frame
@@ -108,17 +105,26 @@ public class PlayerMovement : MonoBehaviour
             Destroy(healthImage[health].gameObject);
         }
     }
+    public void SetGameActive(bool isActive)
+    {
+        isGameActive = isActive;
+    }
+
+    public bool IsGameActive()
+    {
+        return isGameActive;
+    }
 
     private void LooseGame()
     {
-        looseScreen.SetActive(true);
+        screenManager.SetActiveLooseScreen(true);
         isGameActive = false;
         Cursor.lockState = CursorLockMode.None;
     }
 
     public void WinGame()
     {
-        winScreen.SetActive(true);
+        screenManager.SetActiveWinScreen(true);
         isGameActive = false;
         Cursor.lockState = CursorLockMode.None;
     }

@@ -40,6 +40,7 @@ public class SpawnManager : MonoBehaviour
 
     public int GetAmountOfEnemies()
     {
-        return spawnPoints1.Length + spawnPoints2.Length + spawnPoints3.Length;
+        int enemiesAmount = spawnPoints1.Length + spawnPoints2.Length + spawnPoints3.Length;
+        return enemiesAmount;
     }
 }
